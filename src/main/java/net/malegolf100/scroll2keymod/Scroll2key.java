@@ -39,7 +39,7 @@ public class Scroll2key implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Initalizing Scroll2Key mod!");
 		// Register a client tick event listener
 		ClientTickEvents.START_CLIENT_TICK.register(client -> {
 			while (keyBindingRight.wasPressed()) {
