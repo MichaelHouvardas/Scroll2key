@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "auto-command-mod",
+	"id": "scroll2key",
 	"version": "${version}",
-	"name": "Auto Command Mod",
+	"name": "scroll2key",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -12,21 +12,21 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/auto-command-mod/icon.png",
+	"icon": "assets/scroll2key/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.autocommandmod.CommandBinds"
+			"net.malegolf100.scroll2keymod.Scroll2key"
 		],
 		"fabric-datagen": [
-			"net.autocommandmod.ExampleModDataGenerator"
+			"net.malegolf100.scroll2keymod.Scroll2keyDataGenerator"
 		]
 	},
 	"mixins": [
-		"auto-command-mod.mixins.json"
+		"scroll2key.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.22",
+		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*"
