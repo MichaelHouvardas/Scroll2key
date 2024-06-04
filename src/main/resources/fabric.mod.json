@@ -3,9 +3,9 @@
 	"id": "scroll2key",
 	"version": "${version}",
 	"name": "scroll2key",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds keybinds for scrolling threw your hotbar!",
 	"authors": [
-		"Me!"
+		"MALEgolf100"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

@@ -149,3 +149,21 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 [10:56:56] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
 [10:56:56] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
 [10:56:56] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[10:59:46] [Render thread/INFO] (Minecraft) Loaded 7 recipes
+[10:59:46] [Render thread/INFO] (Minecraft) Loaded 1271 advancements
+[10:59:46] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 123.7 μs
+[10:59:46] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.20.1
+[10:59:46] [Server thread/INFO] (Minecraft) Generating keypair
+[10:59:46] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[10:59:47] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:59:47] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[10:59:47] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
+[10:59:47] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[10:59:47] [Render thread/INFO] (Minecraft) Time elapsed: 978 ms
+[10:59:48] [Server thread/INFO] (Minecraft) Player883[local:E:a9b4fe5d] logged in with entity id 3 at (12.960478450103174, -50.01965758357852, 18.0785342407864)
+[10:59:48] [Server thread/INFO] (Minecraft) Player883 joined the game
+[10:59:48] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[11:00:14] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[11:00:14] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[11:00:14] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[11:00:14] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
