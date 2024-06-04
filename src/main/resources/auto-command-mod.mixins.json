@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "net.autocommandmod.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"ExampleMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
