@@ -40,7 +40,7 @@ public class Scroll2key implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Initalizing Scroll2Key mod!");
-		// Register a client tick event listener
+		// Register client tick event listener
 		ClientTickEvents.START_CLIENT_TICK.register(client -> {
 			while (keyBindingRight.wasPressed()) {
 				scrollHotbarRight();
@@ -55,9 +55,9 @@ public class Scroll2key implements ModInitializer {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 		if (player != null) {
 			int currentSlot = player.getInventory().selectedSlot;
-			int nextSlot = (currentSlot + 1) % 9; // Assuming 9 slots in the hotbar
+			int nextSlot = (currentSlot + 1) % 9; // 9 slots in the hotbar
 			player.getInventory().selectedSlot = nextSlot;
-			// Optionally, update the hotbar display (visual feedback)
+			// Update the hotbar display (visual feedback)
 		}
 	}
 
@@ -67,7 +67,7 @@ public class Scroll2key implements ModInitializer {
 			int currentSlot = player.getInventory().selectedSlot;
 			int prevSlot = (currentSlot - 1 + 9) % 9; // Wrap around to the last slot
 			player.getInventory().selectedSlot = prevSlot;
-			// Optionally, update the hotbar display (visual feedback)
+			// Update the hotbar display (visual feedback)
 		}
 	}
 }
