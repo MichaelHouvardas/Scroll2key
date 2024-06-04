@@ -1,2 +1,3 @@
-# CommandBinds
-This is in Pre Pre Alpha and really should not be used by anyone im just expermenting here with making command hotkeys
+# Scroll2key
+im just expermenting here with making hotbar shifting keybinds
+some code was borrowed from my other mod commandbinds
