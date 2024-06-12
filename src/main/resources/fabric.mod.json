@@ -3,7 +3,7 @@
 	"id": "scroll2key",
 	"version": "${version}",
 	"name": "scroll2key",
-	"description": "Adds keybinds for scrolling threw your hotbar!",
+	"description": "Adds keybinds for scrolling through your hotbar!",
 	"authors": [
 		"MALEgolf100"
 	],
@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"net.malegolf100.scroll2keymod.Scroll2key"
+		],
+		"client": [
+			"net.malegolf100.scroll2keymod.NoMouseHotbarScroll"
 		],
 		"fabric-datagen": [
 			"net.malegolf100.scroll2keymod.Scroll2keyDataGenerator"
