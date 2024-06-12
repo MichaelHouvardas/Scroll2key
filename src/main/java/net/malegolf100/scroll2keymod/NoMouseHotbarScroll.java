@@ -26,6 +26,9 @@ public class NoMouseHotbarScroll implements ClientModInitializer {
     // Logger instance
     private static final Logger LOGGER = LogManager.getLogger("NoMouseHotbarScroll");
 
+    // Variable to track the previous screen state
+    private boolean wasInMenu = false;
+
     @Override
     public void onInitializeClient() {
         // Register the key binding with the specified key and category
@@ -44,9 +47,9 @@ public class NoMouseHotbarScroll implements ClientModInitializer {
                 scrollDisabler = !scrollDisabler;
 
                 // Log the status of hotbar scroll
-                LOGGER.info("scrollDisabler " + (scrollDisabler ? "false" : "true"));
+                LOGGER.info("scrollDisabler " + (scrollDisabler ? "true" : "false"));
                 // Send a chat message to the player indicating the status of hotbar scroll
-                client.player.sendMessage(Text.of("scrollDisabler " + (scrollDisabler ? "false" : "true")), true);
+                client.player.sendMessage(Text.of("scrollDisabler " + (scrollDisabler ? "true" : "false")), true);
             }
 
             // Check if the game window is null
@@ -67,15 +70,23 @@ public class NoMouseHotbarScroll implements ClientModInitializer {
             }
 
             // Check if the game is paused or in a menu
-            if (client.isPaused() || client.currentScreen != null) {
-                // Set scrollDisabler to false to prevent hotbar scroll when in a menu
-                if (!scrollDisabler) {
+            boolean isInMenu = client.isPaused() || client.currentScreen != null;
 
-                }
+            if (isInMenu && !wasInMenu) {
+                // Entering a menu, set scrollDisabler to false
+                LOGGER.info("Entering menu, scrollDisabler false");
                 scrollDisabler = false;
-                LOGGER.info("ScrollDisabler false");
-            } else if (!scrollDisabler) { // If hotbar scroll is disabled
-                // Restore the original scroll callback if it has been stored
+            } else if (!isInMenu && wasInMenu) {
+                // Exiting a menu, set scrollDisabler to true
+                LOGGER.info("Exiting menu, scrollDisabler true");
+                scrollDisabler = true;
+            }
+
+            // Update the previous screen state
+            wasInMenu = isInMenu;
+
+            // Restore the original scroll callback if scrollDisabler is true
+            if (!scrollDisabler) {
                 if (originalScrollCallback != null) {
                     long windowHandle = client.getWindow().getHandle();
                     GLFW.glfwSetScrollCallback(windowHandle, originalScrollCallback);
