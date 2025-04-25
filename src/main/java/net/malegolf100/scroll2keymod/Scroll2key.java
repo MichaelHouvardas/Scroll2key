@@ -3,13 +3,10 @@ package net.malegolf100.scroll2keymod;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.server.command.ExecuteCommand;
-import net.minecraft.server.network.ServerPlayerEntity;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +14,6 @@ import org.slf4j.LoggerFactory;
 public class Scroll2key implements ModInitializer {
 	public static final String MOD_ID = "scroll2keymod";
 	public static final Logger LOGGER = LoggerFactory.getLogger("scroll2key");
-
 
 	private static final KeyBinding keyBindingRight = KeyBindingHelper.registerKeyBinding(
 			new KeyBinding(
@@ -37,26 +33,37 @@ public class Scroll2key implements ModInitializer {
 			)
 	);
 
+	// Flags to track key press state
+	private boolean keyRightPressed = false;
+	private boolean keyLeftPressed = false;
+
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Initalizing Scroll2Key mod!");
+		LOGGER.info("Initializing Scroll2Key mod!");
 		// Register client tick event listener
 		ClientTickEvents.START_CLIENT_TICK.register(client -> {
-			while (keyBindingRight.wasPressed()) {
+			if (keyBindingRight.isPressed() && !keyRightPressed) {
 				scrollHotbarRight();
+				keyRightPressed = true;  // Set flag to prevent continuous pressing
+			} else if (!keyBindingRight.isPressed()) {
+				keyRightPressed = false;  // Reset flag when key is released
 			}
 
-			while (keyBindingLeft.wasPressed()) {
+			if (keyBindingLeft.isPressed() && !keyLeftPressed) {
 				scrollHotbarLeft();
+				keyLeftPressed = true;  // Set flag to prevent continuous pressing
+			} else if (!keyBindingLeft.isPressed()) {
+				keyLeftPressed = false;  // Reset flag when key is released
 			}
 		});
 	}
+
 	private void scrollHotbarRight() {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 		if (player != null) {
-			int currentSlot = player.getInventory().selectedSlot;
+			int currentSlot = player.getInventory().getSelectedSlot();  // Correct method to get the current selected slot
 			int nextSlot = (currentSlot + 1) % 9; // 9 slots in the hotbar
-			player.getInventory().selectedSlot = nextSlot;
+			player.getInventory().setSelectedSlot(nextSlot);  // Correct method to set the selected slot
 			// Update the hotbar display (visual feedback)
 		}
 	}
@@ -64,9 +71,9 @@ public class Scroll2key implements ModInitializer {
 	private void scrollHotbarLeft() {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 		if (player != null) {
-			int currentSlot = player.getInventory().selectedSlot;
+			int currentSlot = player.getInventory().getSelectedSlot();  // Correct method to get the current selected slot
 			int prevSlot = (currentSlot - 1 + 9) % 9; // Wrap around to the last slot
-			player.getInventory().selectedSlot = prevSlot;
+			player.getInventory().setSelectedSlot(prevSlot);  // Correct method to set the selected slot
 			// Update the hotbar display (visual feedback)
 		}
 	}
